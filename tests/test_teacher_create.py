@@ -1,7 +1,6 @@
 import random
 from faker import Faker
 
-from logger.logger import Logger
 from services.university.models.base_teacher import SubjectEnum
 from services.university.models.teacher_request import TeacherRequest
 from services.university.university_service import UniversityService

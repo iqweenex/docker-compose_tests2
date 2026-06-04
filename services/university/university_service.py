@@ -4,6 +4,7 @@ from services.university.helpers.group_helper import GroupHelper
 from services.university.helpers.student_helper import StudentHelper
 from services.university.helpers.teacher_helper import TeacherHelper
 from services.university.helpers.grade_helper import GradeHelper
+from services.university.models.base_grade import BaseGrade, MIN_GRADE, MAX_GRADE
 from services.university.models.base_student import DegreeEnum
 from services.university.models.base_teacher import SubjectEnum
 from services.university.models.grade_request import GradeRequest
@@ -88,7 +89,7 @@ class UniversityService(BaseService):
         grade_request = GradeRequest(
             teacher_id=teacher.id,
             student_id=student.id,
-            grade=random.randint(0, 5)
+            grade=random.randint(MIN_GRADE, MAX_GRADE)
         )
         return self.create_grade(grade_request=grade_request)
 

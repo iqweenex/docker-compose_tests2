@@ -6,6 +6,7 @@ from services.general.helpers.base_helper import BaseHelper
 class GradeHelper(BaseHelper):
     ENDPOINT_PREFIX = "/grades"
     ROOT_ENDPOINT = f"{ENDPOINT_PREFIX}/"
+    STATS_ENDPOINT = f"{ROOT_ENDPOINT}stats/"
 
     def post_grade(self, data: dict) -> requests.Response:
         response = self.api_utils.post(self.ROOT_ENDPOINT, data=data)
@@ -29,5 +30,5 @@ class GradeHelper(BaseHelper):
         if group_id is not None:
             params['group_id'] = group_id
 
-        response = self.api_utils.get(f"{self.ENDPOINT_PREFIX}/stats/", params=params)
+        response = self.api_utils.get(f"{self.STATS_ENDPOINT}", params=params)
         return response

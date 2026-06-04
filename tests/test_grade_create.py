@@ -1,5 +1,6 @@
 import random
-
+import pytest_check as check
+from services.university.models.base_grade import MAX_GRADE, MIN_GRADE
 from logger.logger import Logger
 from services.university.university_service import UniversityService
 from services.university.models.grade_request import GradeRequest
@@ -20,24 +21,33 @@ class TestGradeCreate:
         grade_request = GradeRequest(
             teacher_id=teacher.id,
             student_id=student.id,
-            grade=random.randint(0, 5)
+            grade=random.randint(MIN_GRADE, MAX_GRADE)
         )
         grade_response = university_service.create_grade(grade_request=grade_request)
 
-        assert grade_response.teacher_id == teacher.id, \
-            f"Wrong teacher_id.\n" \
-            f"Actual: {grade_response.teacher_id}\n" \
+        check.equal(
+            grade_response.teacher_id,
+            teacher.id,
+            f"Wrong teacher_id."
+            f"\nActual: {grade_response.teacher_id}\n"
             f"Expected: {teacher.id}"
+        )
 
-        assert grade_response.student_id == student.id, \
-            f"Wrong student_id.\n" \
-            f"Actual: {grade_response.student_id}\n" \
+        check.equal(
+            grade_response.student_id,
+            student.id,
+            f"Wrong student_id.\n"
+            f"Actual: {grade_response.student_id}\n"
             f"Expected: {student.id}"
+        )
 
-        assert grade_response.grade == grade_request.grade, \
-            f"Wrong grade.\n" \
-            f"Actual: {grade_response.grade}\n" \
+        check.equal(
+            grade_response.grade,
+            grade_request.grade,
+            f"Wrong grade.\n"
+            f"Actual: {grade_response.grade}\n"
             f"Expected: {grade_request.grade}"
+        )
 
     def create_and_update_grade(self, university_api_utils_admin):
         university_service = UniversityService(api_utils=university_api_utils_admin)
@@ -58,12 +68,16 @@ class TestGradeCreate:
             grade_request=grade_request
         )
 
-        assert updated_grade.grade == new_grade, \
-            f"Grade not updated.\n" \
-            f"Actual: {updated_grade.grade}\n" \
-            f"Expected: {new_grade}"
+        check.equal(
+            updated_grade.grade,
+            new_grade,
+            f"Wrong grade\n"
+            f"Actual: {updated_grade.grade}\n"
+            f"Expected: {new_grade}")
 
-        assert updated_grade.id == grade.id, \
-            f"Grade id changed.\n" \
-            f"Actual: {updated_grade.id}\n" \
-            f"Expected: {grade.id}"
+        check.equal(
+            updated_grade.id,
+            grade.id,
+            f"Wrong id\n"
+            f"Actual: {updated_grade.id}\n"
+            f"Expected: {grade.id}")
