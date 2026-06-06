@@ -101,3 +101,18 @@ class UniversityService(BaseService):
             group_id=group_id
         )
         return GradeStatisticsResponse(**response.json())
+
+    def create_list_of_students(self, students_count, group_id) -> list[StudentResponse]:
+        students = []
+        for _ in range(students_count):
+            students.append(self.create_random_student(group_id))
+
+        return students
+
+    def create_list_of_teachers(self, teachers_count) -> list[TeacherResponse]:
+        teachers = []
+        for _ in range(teachers_count):
+            teachers.append(self.create_random_teacher())
+
+        return teachers
+

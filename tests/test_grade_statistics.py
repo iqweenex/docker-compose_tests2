@@ -2,15 +2,19 @@ import random
 from faker import Faker
 import pytest_check as check
 from logger.logger import Logger
+from collections import defaultdict
 from services.university.models.base_grade import MAX_GRADE, MIN_GRADE
 from services.university.models.grade_request import GradeRequest
 from services.university.university_service import UniversityService
+from utils.soft_assert import SoftAssert
 
 faker = Faker()
 
 
 class TestGradeStatistics:
-    COUNT_GRADES = 10
+    COUNT_GRADES = random.randint(3, 10)
+    COUNT_STUDENTS = random.randint(3, 10)
+    COUNT_TEACHERS = random.randint(2, 4)
 
     def test_grade_statistics_for_student(self, university_api_utils_admin):
         Logger.info("### Step 1. Create test data")
@@ -62,58 +66,69 @@ class TestGradeStatistics:
             f"Expected: {avg_grades}"
         )
 
-    def test_get_statictics_for_student_and_teacher(self, university_api_utils_admin):
+    def test_get_statistics_for_student_and_teacher(self, university_api_utils_admin):
         Logger.info("### Get statistics for student and teacher")
-        Logger.info("### Step 1. Create test data")
         university_service = UniversityService(api_utils=university_api_utils_admin)
 
+        Logger.info("### Step 1. Create group")
         group = university_service.create_random_group()
 
-        student_response = university_service.create_random_student(group.id)
+        Logger.info("### Step 2. Create students")
+        students = university_service.create_list_of_students(self.COUNT_STUDENTS, group.id)
 
-        teacher_response = university_service.create_random_teacher()
+        teachers = university_service.create_list_of_teachers(self.COUNT_TEACHERS)
 
-        Logger.info("### Step 2. Create multiple grades for the student")
-        grades = []
+        Logger.info("### Step 3. Pop one student with some grades")
+
+        student_for_check = students.pop(0)
+
+        grades_for_check = []
+        grades_by_teachers = defaultdict(list)
         for _ in range(self.COUNT_GRADES):
+            teacher_id = random.choice(teachers).id
             grade_request = GradeRequest(
-                teacher_id=teacher_response.id,
-                student_id=student_response.id,
+                teacher_id=teacher_id,
+                student_id=student_for_check.id,
                 grade=random.randint(MIN_GRADE, MAX_GRADE)
             )
             grade_response = university_service.create_grade(grade_request=grade_request)
-            grades.append(grade_response.grade)
+            grades_for_check.append(grade_response.grade)
+            grades_by_teachers[teacher_id].append(grade_response.grade)
 
-        Logger.info("### Step 3. Get grade statistics for the student")
-        stats = university_service.get_grades_stats(
-            student_id=student_response.id,
-            teacher_id=teacher_response.id)
+        Logger.info("### Step 4. Create grades for others students")
 
-        avg_grades = sum(grades) / len(grades)
+        for student in students:
+            for _ in range(self.COUNT_GRADES):
+                grade_request = GradeRequest(
+                    teacher_id=random.choice(teachers).id,
+                    student_id=student.id,
+                    grade=random.randint(MIN_GRADE, MAX_GRADE)
+                )
+                university_service.create_grade(grade_request=grade_request)
 
-        check.equal(
-            stats.min,
-            min(grades),
-            f"Wrong min."
-            f"\nActual: {stats.min}\n"
-            f"Expected: {min(grades)}"
-        )
+        Logger.info(f"### Step 5.1. Check grades stats for student_id = {student_for_check.id}")
 
-        check.equal(
-            stats.max,
-            max(grades),
-            f"Wrong max."
-            f"\nActual: {stats.max}\n"
-            f"Expected: {max(grades)}"
-        )
+        soft_assert = SoftAssert()
 
-        check.equal(
-            round(stats.avg, 2),
-            round(avg_grades, 2),
-            f"Wrong avg."
-            f"\nActual: {stats.avg}\n"
-            f"Expected: {avg_grades}"
-        )
+        stats = university_service.get_grades_stats(student_id=student_for_check.id)
+
+        self.soft_assert_fast_check_grades(soft_assert, stats, grades_for_check)
+
+        Logger.info(f"### Step 5.2. Check grades stats for student_id = {student_for_check.id} "
+                    f"and teacher_id")
+        for teacher_id in grades_by_teachers.keys():
+            grades = grades_by_teachers[teacher_id]
+            stats = university_service.get_grades_stats(
+                student_id=student_for_check.id,
+                teacher_id=teacher_id)
+            self.soft_assert_fast_check_grades(soft_assert, stats, grades)
+
+    def soft_assert_fast_check_grades(self, soft_assert: SoftAssert, stats, grades_for_check):
+        soft_assert.assert_equal(stats.count, len(grades_for_check))
+        soft_assert.assert_equal(stats.min, min(grades_for_check))
+        soft_assert.assert_equal(stats.max, max(grades_for_check))
+        soft_assert.assert_equal(round(stats.avg, 2), round(sum(grades_for_check) / len(grades_for_check), 2))
+        soft_assert.assert_all()
 
     def test_grade_statistics_for_empty_params(self, university_api_utils_admin):
         Logger.info("### Get statistics for empty params")
@@ -152,10 +167,13 @@ class TestGradeStatistics:
 
         Logger.info(f"=====Stats: {stats.model_dump()}")
 
-        assert stats.count == 0, \
-            f"Wrong count for empty stats.\n" \
-            f"Actual: {stats.count}\n" \
-            f"Expected: 0"
+        soft_assert = SoftAssert()
+
+        soft_assert.assert_equal(stats.count, 0)
+        soft_assert.assert_true(stats.min is None)
+        soft_assert.assert_true(stats.max is None)
+        soft_assert.assert_true(stats.avg is None)
+        soft_assert.assert_all()
 
     def test_grade_statistics_for_non_existent_teacher(self, university_api_utils_admin):
         Logger.info("### Get statistics for non-existent teacher")
@@ -164,10 +182,13 @@ class TestGradeStatistics:
 
         Logger.info(f"====Stats: {stats.model_dump()}")
 
-        assert stats.count == 0, \
-            f"Wrong count for empty stats.\n" \
-            f"Actual: {stats.count}\n" \
-            f"Expected: 0"
+        soft_assert = SoftAssert()
+
+        soft_assert.assert_equal(stats.count, 0)
+        soft_assert.assert_true(stats.min is None)
+        soft_assert.assert_true(stats.max is None)
+        soft_assert.assert_true(stats.avg is None)
+        soft_assert.assert_all()
 
     def test_grade_statistics_for_non_existent_group(self, university_api_utils_admin):
         Logger.info("### Get statistics for non-existent group")
