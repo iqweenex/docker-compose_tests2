@@ -2,11 +2,11 @@ name: API Tests
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
   workflow_dispatch:
 
 env:
-  SERVICE_READY_TIMEOUT: 180
+  SERVICE_READY_TIMEOUT: 60
 
 jobs:
   lint:
@@ -22,15 +22,15 @@ jobs:
 
   api-tests:
     runs-on: ubuntu-latest
-    need: lint
+    needs: lint
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Start services with Docker compose
+      - name: Start services with Docker Compose
         run: |
-          docker-compose up -d --wait --wait-timeout ${{ env.SERVICE_READY_TIMEOUT }}
+          docker compose up -d --wait --wait-timeout ${{ env.SERVICE_READY_TIMEOUT }}
           docker compose ps
 
       - name: Build test image
@@ -43,7 +43,7 @@ jobs:
             --name test-runner \
             api-tests
 
-      - name: Upload test result
+      - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
