@@ -1,0 +1,28 @@
+[2026-06-09 09:31:43,729 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 145' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=janicegibson&password=%40NGUOXD_x2LcOgrbJK5W7_8GB%25jyq0&password_repeat=%40NGUOXD_x2LcOgrbJK5W7_8GB%25jyq0&email=nicole92%40example.com' http://127.0.0.1:8000/auth/register/
+[2026-06-09 09:31:43,730 - INFO] - Response status code='201', elapsed_time='0:00:00.272042'
+{
+  "detail": "User registered"
+}
+
+[2026-06-09 09:31:44,083 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 65' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=janicegibson&password=%40NGUOXD_x2LcOgrbJK5W7_8GB%25jyq0' http://127.0.0.1:8000/auth/login/
+[2026-06-09 09:31:44,083 - INFO] - Response status code='200', elapsed_time='0:00:00.312098'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJuYW1lIjoiamFuaWNlZ2lic29uIiwiZXhwIjoxNzgxMDA0NzAzLCJpYXQiOjE3ODA5OTc1MDN9.HdxbrhE2dpjFUbntgDjX0DrXI6rGgLQkh_OO-zCzqJcM5uK7GhPxAftmzBtK3a_43uTWS1K-I2vChbSVivFt_0ihCQcZeTcao6e0flW8cUKN1nfb8rnSUOlofT8MCATCjHc0YtGiAsaCfAW_OVEpAttMOZBNBJYwTdFO6nJFAmI7clmsDzZTvxYoOJ-0gCaHmaM2zIVO6WhL6swKEmjJasjFlSVIgbSvuQtR9nXoz06WV2QmmlN2_ZRlEbC_qZnDJ4sL36YNnk9_XGutQb1nhNHw2WTtYJJKMBFRs0bsXJJ9fV2AhZ9efgmSKTrDs4JSlR5u5i5J6Rh2RnS4m0glKQ",
+  "token_type": "Bearer"
+}
+
+[2026-06-09 09:31:44,084 - INFO] - ### Get statistics for non-existent teacher
+[2026-06-09 09:31:44,093 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJuYW1lIjoiamFuaWNlZ2lic29uIiwiZXhwIjoxNzgxMDA0NzAzLCJpYXQiOjE3ODA5OTc1MDN9.HdxbrhE2dpjFUbntgDjX0DrXI6rGgLQkh_OO-zCzqJcM5uK7GhPxAftmzBtK3a_43uTWS1K-I2vChbSVivFt_0ihCQcZeTcao6e0flW8cUKN1nfb8rnSUOlofT8MCATCjHc0YtGiAsaCfAW_OVEpAttMOZBNBJYwTdFO6nJFAmI7clmsDzZTvxYoOJ-0gCaHmaM2zIVO6WhL6swKEmjJasjFlSVIgbSvuQtR9nXoz06WV2QmmlN2_ZRlEbC_qZnDJ4sL36YNnk9_XGutQb1nhNHw2WTtYJJKMBFRs0bsXJJ9fV2AhZ9efgmSKTrDs4JSlR5u5i5J6Rh2RnS4m0glKQ' 'http://127.0.0.1:8001/grades/stats/?teacher_id=-1'
+[2026-06-09 09:31:44,093 - INFO] - Response status code='200', elapsed_time='0:00:00.008573'
+{
+  "count": 0,
+  "min": null,
+  "max": null,
+  "avg": null
+}
+
+[2026-06-09 09:31:44,093 - INFO] - ====Stats: {'count': 0, 'min': None, 'max': None, 'avg': None}
+[2026-06-09 09:31:44,093 - INFO] - Soft assert equal
+[2026-06-09 09:31:44,093 - INFO] - Soft assert condition
+[2026-06-09 09:31:44,093 - INFO] - Soft assert condition
+[2026-06-09 09:31:44,093 - INFO] - Soft assert condition
