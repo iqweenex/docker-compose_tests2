@@ -1,6 +1,9 @@
 import pytest
+import requests
 from faker import Faker
+import time
 
+from logger.logger import Logger
 from services.auth.auth_service import AuthService
 from services.auth.models.login_request import LoginRequest
 from services.auth.models.register_request import RegisterRequest
@@ -54,3 +57,41 @@ def university_api_utils_admin(access_token):
     api_utils = ApiUtils(url=UniversityService.SERVICE_URL,
                          headers={"Authorization": f"Bearer {access_token}"})
     return api_utils
+
+
+@pytest.fixture(scope='session', autouse=True)
+def auth_service_readiness():
+    timeout = 180
+    start_time = time.time()
+    while time.time() < start_time + timeout:
+        try:
+            response = requests.get(AuthService.SERVICE_URL + "/docs")
+            response.raise_for_status()
+        except:
+            time.sleep(1)
+        else:
+            break
+    else:
+        raise RuntimeError(f"Auth service wasn't started during '{timeout}' seconds")
+
+
+def wait_for_service(url: str, name_service: str, timeout: int = 180, interval: int = 1):
+    Logger.info(f"Waiting for '{name_service}' during '{timeout}' seconds")
+    start_time = time.time()
+    while time.time() < start_time + timeout:
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+        except requests.exceptions.RequestException:
+            time.sleep(interval)
+        else:
+            break
+    else:
+        raise RuntimeError(f"{name_service} wasn't started during '{timeout}' seconds")
+
+
+@pytest.fixture(scope='session', autouse=True)
+def auth_university_services_readiness():
+    wait_for_service(AuthService.SERVICE_URL + "/docs", "auth service")
+    wait_for_service(UniversityService.SERVICE_URL + "/docs", "university service")
+    yield
