@@ -1,21 +1,23 @@
 import random
+
 import pytest_check as check
-from services.university.models.base_grade import MAX_GRADE, MIN_GRADE
+
 from logger.logger import Logger
-from services.university.university_service import UniversityService
+from services.university.models.base_grade import MAX_GRADE, MIN_GRADE
 from services.university.models.grade_request import GradeRequest
+from services.university.university_service import UniversityService
 
 
 class TestGradeCreate:
     def test_grade_create_and_update(self, university_api_utils_admin):
         university_service = UniversityService(api_utils=university_api_utils_admin)
-        Logger.info(f"### Step 1. Group create")
+        Logger.info("### Step 1. Group create")
         group = university_service.create_random_group()
 
-        Logger.info(f"### Step 2. Create random student")
+        Logger.info("### Step 2. Create random student")
         student = university_service.create_random_student(group.id)
 
-        Logger.info(f"### Step 3. Create teacher")
+        Logger.info("### Step 3. Create teacher")
         teacher = university_service.create_random_teacher()
 
         grade_request = GradeRequest(
@@ -51,12 +53,12 @@ class TestGradeCreate:
 
     def create_and_update_grade(self, university_api_utils_admin):
         university_service = UniversityService(api_utils=university_api_utils_admin)
-        Logger.info(f"### Step 1. Create random grade")
+        Logger.info("### Step 1. Create random grade")
         grade = university_service.create_random_grade()
         actual_grade = grade.grade
         new_grade = actual_grade - 1 if actual_grade == 5 else actual_grade + 1
 
-        Logger.info(f"### Step 2. Update grade")
+        Logger.info("### Step 2. Update grade")
         grade_request = GradeRequest(
             teacher_id=grade.teacher_id,
             student_id=grade.student_id,

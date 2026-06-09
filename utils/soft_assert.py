@@ -10,7 +10,7 @@ class SoftAssert:
         self._errors = []
 
     def assert_equal(self, actual, expected, message: str = None):
-        Logger.info(f"Soft assert equal")
+        Logger.info("Soft assert equal")
         if actual != expected:
             error_msg = message or f"Expected: {expected}\n" \
                                    f"Actual: {actual}"
@@ -18,7 +18,7 @@ class SoftAssert:
         return actual == expected  # True
 
     def assert_true(self, condition, message=None):
-        Logger.info(f"Soft assert condition")
+        Logger.info("Soft assert condition")
         if not condition:
             error_msg = message or f"{condition} = False"
             self._errors.append(error_msg)

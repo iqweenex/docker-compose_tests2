@@ -1,6 +1,6 @@
+import pytest
 import requests.status_codes
 from faker import Faker
-import pytest
 
 from services.university.helpers.group_helper import GroupHelper
 

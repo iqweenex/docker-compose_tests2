@@ -1,5 +1,7 @@
 from typing import Optional
+
 from pydantic import BaseModel, ConfigDict, Field
+
 from .base_grade import MAX_GRADE, MIN_GRADE
 
 

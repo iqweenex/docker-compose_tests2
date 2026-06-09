@@ -1,7 +1,7 @@
 import json
 
-import requests
 import curlify
+import requests
 from requests import Session
 
 from logger.logger import Logger

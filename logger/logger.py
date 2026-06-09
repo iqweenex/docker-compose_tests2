@@ -2,8 +2,9 @@ import logging
 import os
 import sys
 from logging.handlers import RotatingFileHandler
-from logger.logger_config import LoggerConfig
 from typing import Union
+
+from logger.logger_config import LoggerConfig
 
 
 class Logger:
@@ -48,4 +49,3 @@ class Logger:
     def step(message: str) -> None:
         Logger.__logger.info(msg=message)
 
-    

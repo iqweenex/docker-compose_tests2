@@ -1,10 +1,14 @@
+import random
+
+from faker import Faker
+
 from services.general.base_service import BaseService
 from services.general.models.success_response import SuccessResponse
+from services.university.helpers.grade_helper import GradeHelper
 from services.university.helpers.group_helper import GroupHelper
 from services.university.helpers.student_helper import StudentHelper
 from services.university.helpers.teacher_helper import TeacherHelper
-from services.university.helpers.grade_helper import GradeHelper
-from services.university.models.base_grade import BaseGrade, MIN_GRADE, MAX_GRADE
+from services.university.models.base_grade import MAX_GRADE, MIN_GRADE
 from services.university.models.base_student import DegreeEnum
 from services.university.models.base_teacher import SubjectEnum
 from services.university.models.grade_request import GradeRequest
@@ -17,8 +21,6 @@ from services.university.models.student_response import StudentResponse
 from services.university.models.teacher_request import TeacherRequest
 from services.university.models.teacher_response import TeacherResponse
 from utils.api_utils import ApiUtils
-from faker import Faker
-import random
 
 faker = Faker()
 

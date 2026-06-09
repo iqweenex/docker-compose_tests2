@@ -1,8 +1,10 @@
 import random
-from faker import Faker
-import pytest_check as check
-from logger.logger import Logger
 from collections import defaultdict
+
+import pytest_check as check
+from faker import Faker
+
+from logger.logger import Logger
 from services.university.models.base_grade import MAX_GRADE, MIN_GRADE
 from services.university.models.grade_request import GradeRequest
 from services.university.university_service import UniversityService
@@ -158,7 +160,7 @@ class TestGradeStatistics:
         Logger.info(f"=====Stats: {stats.model_dump()}")
 
         assert stats.count > 0, \
-            f"Wrong count for empty stats."
+            "Wrong count for empty stats."
 
     def test_grade_statistics_for_non_existent_student(self, university_api_utils_admin):
         Logger.info("### Get statistics for non-existent student")

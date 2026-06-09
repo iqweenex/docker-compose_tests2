@@ -1,4 +1,5 @@
 import random
+
 from faker import Faker
 
 from services.university.models.base_teacher import SubjectEnum
