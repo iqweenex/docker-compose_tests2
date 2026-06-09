@@ -50,8 +50,10 @@ jobs:
 
       - name: Run tests
         run: |
+          mkdir -p allure-results
           docker run --rm --network host \
             --name test-runner \
+            -v ${{ github.workspace }}/allure-results:/app/allure-results \
             api-tests
 
       - name: Upload test results
