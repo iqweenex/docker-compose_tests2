@@ -1,4 +1,5 @@
 import random
+
 import allure
 import pytest_check as check
 

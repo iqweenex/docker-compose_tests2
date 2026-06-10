@@ -1,7 +1,8 @@
+import allure
 import pytest
 import requests.status_codes
 from faker import Faker
-import allure
+
 from services.university.helpers.group_helper import GroupHelper
 
 faker = Faker()

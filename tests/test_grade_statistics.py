@@ -1,9 +1,10 @@
 import random
 from collections import defaultdict
 
+import allure
 import pytest_check as check
 from faker import Faker
-import allure
+
 from logger.logger import Logger
 from services.university.models.base_grade import MAX_GRADE, MIN_GRADE
 from services.university.models.grade_request import GradeRequest
