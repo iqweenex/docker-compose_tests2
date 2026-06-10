@@ -1,12 +1,15 @@
 import pytest
 import requests.status_codes
 from faker import Faker
-
+import allure
 from services.university.helpers.group_helper import GroupHelper
 
 faker = Faker()
 
-
+@allure.title("Создание группы без авторизации возвращает 403")
+@allure.feature("Управление группами")
+@allure.story("Security")
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.mark.xfail
 class TestGroupContract:
     def test_create_group_anonym(self, university_api_utils_anonym):

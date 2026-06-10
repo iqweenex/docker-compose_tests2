@@ -1,5 +1,6 @@
 import random
 
+import allure
 from faker import Faker
 
 from services.university.models.base_teacher import SubjectEnum
@@ -10,6 +11,10 @@ faker = Faker()
 
 
 class TestTeacherCreate:
+    @allure.title("Создание учителя с валидными данными")
+    @allure.feature("Управление учителями")
+    @allure.story("Создание учителя")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_teacher_create(self, university_api_utils_admin):
         university_service = UniversityService(api_utils=university_api_utils_admin)
         teacher_request = TeacherRequest(

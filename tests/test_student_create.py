@@ -1,5 +1,6 @@
 import random
 
+import allure
 from faker import Faker
 
 from logger.logger import Logger
@@ -12,6 +13,10 @@ faker = Faker()
 
 
 class TestStudentCreate:
+    @allure.title("Создание студента в существующей группе")
+    @allure.feature("Управление студентами")
+    @allure.story("Создание студента")
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_student_create(self, university_api_utils_admin):
         Logger.info("### Step 1. Create group")
         university_service = UniversityService(api_utils=university_api_utils_admin)
