@@ -1,0 +1,56 @@
+[2026-06-10 04:27:29,956 - INFO] - Waiting for 'auth service' during '180' seconds
+[2026-06-10 04:27:29,959 - INFO] - Waiting for 'university service' during '180' seconds
+[2026-06-10 04:27:30,264 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 162' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=kennethrose&password=1U%262NueH6pUCZW%23M%28%40mRaCo%40P3F84%21&password_repeat=1U%262NueH6pUCZW%23M%28%40mRaCo%40P3F84%21&email=kellymegan%40example.com' http://127.0.0.1:8000/auth/register/
+[2026-06-10 04:27:30,265 - INFO] - Response status code='201', elapsed_time='0:00:00.299500'
+{
+  "detail": "User registered"
+}
+
+[2026-06-10 04:27:30,622 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 72' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=kennethrose&password=1U%262NueH6pUCZW%23M%28%40mRaCo%40P3F84%21' http://127.0.0.1:8000/auth/login/
+[2026-06-10 04:27:30,622 - INFO] - Response status code='200', elapsed_time='0:00:00.315583'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoia2VubmV0aHJvc2UiLCJleHAiOjE3ODEwNzI4NTAsImlhdCI6MTc4MTA2NTY1MH0.OlR0JisNo7yYrygHNL5ezFF3rax0P8zZ5XJmfcTJMANrUgI41Udn-IrO2gTRB7QItRjeDXSFgS5jQIUUDccCCbxUiLg9CVjpTfjBFydE7XbPHsqxgx3ueNAjS-COUfHF-JEoWIKKHaZv9oP9JXRrpCk2ilpt-v9Zv7Smt1jpkifV88wGQd1Y-veLNWYAJgpG8jx_PEzTgUMI_soIzo5d15xGqwWGQBOKtkacLw7kl9OCyjEEJJNakjDa8UnkEJtcqJziBqhUBvX14LKWg9INmIPXMX4-UOomLdwZ_Noy6m4HoL3q593nqz1Z0xGm5EqzHvUb3w0Cao13JsMwMVwtuw",
+  "token_type": "Bearer"
+}
+
+[2026-06-10 04:27:30,623 - INFO] - ### Step 1. Create group
+[2026-06-10 04:27:30,661 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoia2VubmV0aHJvc2UiLCJleHAiOjE3ODEwNzI4NTAsImlhdCI6MTc4MTA2NTY1MH0.OlR0JisNo7yYrygHNL5ezFF3rax0P8zZ5XJmfcTJMANrUgI41Udn-IrO2gTRB7QItRjeDXSFgS5jQIUUDccCCbxUiLg9CVjpTfjBFydE7XbPHsqxgx3ueNAjS-COUfHF-JEoWIKKHaZv9oP9JXRrpCk2ilpt-v9Zv7Smt1jpkifV88wGQd1Y-veLNWYAJgpG8jx_PEzTgUMI_soIzo5d15xGqwWGQBOKtkacLw7kl9OCyjEEJJNakjDa8UnkEJtcqJziBqhUBvX14LKWg9INmIPXMX4-UOomLdwZ_Noy6m4HoL3q593nqz1Z0xGm5EqzHvUb3w0Cao13JsMwMVwtuw' -H 'Content-Length: 22' -H 'Content-Type: application/json' -d '{"name": "David Paul"}' http://127.0.0.1:8001/groups/
+[2026-06-10 04:27:30,661 - INFO] - Response status code='201', elapsed_time='0:00:00.037203'
+{
+  "name": "David Paul",
+  "id": 1
+}
+
+[2026-06-10 04:27:30,661 - INFO] - ### Step 2. Create random student
+[2026-06-10 04:27:30,717 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoia2VubmV0aHJvc2UiLCJleHAiOjE3ODEwNzI4NTAsImlhdCI6MTc4MTA2NTY1MH0.OlR0JisNo7yYrygHNL5ezFF3rax0P8zZ5XJmfcTJMANrUgI41Udn-IrO2gTRB7QItRjeDXSFgS5jQIUUDccCCbxUiLg9CVjpTfjBFydE7XbPHsqxgx3ueNAjS-COUfHF-JEoWIKKHaZv9oP9JXRrpCk2ilpt-v9Zv7Smt1jpkifV88wGQd1Y-veLNWYAJgpG8jx_PEzTgUMI_soIzo5d15xGqwWGQBOKtkacLw7kl9OCyjEEJJNakjDa8UnkEJtcqJziBqhUBvX14LKWg9INmIPXMX4-UOomLdwZ_Noy6m4HoL3q593nqz1Z0xGm5EqzHvUb3w0Cao13JsMwMVwtuw' -H 'Content-Length: 146' -H 'Content-Type: application/json' -d '{"first_name": "Heather", "last_name": "Sheppard", "email": "wmccarthy@example.org", "degree": "Bachelor", "phone": "+72521864178", "group_id": 1}' http://127.0.0.1:8001/students/
+[2026-06-10 04:27:30,718 - INFO] - Response status code='201', elapsed_time='0:00:00.015303'
+{
+  "first_name": "Heather",
+  "last_name": "Sheppard",
+  "email": "wmccarthy@example.org",
+  "degree": "Bachelor",
+  "phone": "+72521864178",
+  "group_id": 1,
+  "id": 1
+}
+
+[2026-06-10 04:27:30,718 - INFO] - ### Step 3. Create teacher
+[2026-06-10 04:27:30,770 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoia2VubmV0aHJvc2UiLCJleHAiOjE3ODEwNzI4NTAsImlhdCI6MTc4MTA2NTY1MH0.OlR0JisNo7yYrygHNL5ezFF3rax0P8zZ5XJmfcTJMANrUgI41Udn-IrO2gTRB7QItRjeDXSFgS5jQIUUDccCCbxUiLg9CVjpTfjBFydE7XbPHsqxgx3ueNAjS-COUfHF-JEoWIKKHaZv9oP9JXRrpCk2ilpt-v9Zv7Smt1jpkifV88wGQd1Y-veLNWYAJgpG8jx_PEzTgUMI_soIzo5d15xGqwWGQBOKtkacLw7kl9OCyjEEJJNakjDa8UnkEJtcqJziBqhUBvX14LKWg9INmIPXMX4-UOomLdwZ_Noy6m4HoL3q593nqz1Z0xGm5EqzHvUb3w0Cao13JsMwMVwtuw' -H 'Content-Length: 68' -H 'Content-Type: application/json' -d '{"first_name": "Frank", "last_name": "Miller", "subject": "History"}' http://127.0.0.1:8001/teachers/
+[2026-06-10 04:27:30,770 - INFO] - Response status code='201', elapsed_time='0:00:00.010422'
+{
+  "first_name": "Frank",
+  "last_name": "Miller",
+  "subject": "History",
+  "id": 1
+}
+
+[2026-06-10 04:27:30,770 - INFO] - ### Step 4. Create grade
+[2026-06-10 04:27:30,824 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoia2VubmV0aHJvc2UiLCJleHAiOjE3ODEwNzI4NTAsImlhdCI6MTc4MTA2NTY1MH0.OlR0JisNo7yYrygHNL5ezFF3rax0P8zZ5XJmfcTJMANrUgI41Udn-IrO2gTRB7QItRjeDXSFgS5jQIUUDccCCbxUiLg9CVjpTfjBFydE7XbPHsqxgx3ueNAjS-COUfHF-JEoWIKKHaZv9oP9JXRrpCk2ilpt-v9Zv7Smt1jpkifV88wGQd1Y-veLNWYAJgpG8jx_PEzTgUMI_soIzo5d15xGqwWGQBOKtkacLw7kl9OCyjEEJJNakjDa8UnkEJtcqJziBqhUBvX14LKWg9INmIPXMX4-UOomLdwZ_Noy6m4HoL3q593nqz1Z0xGm5EqzHvUb3w0Cao13JsMwMVwtuw' -H 'Content-Length: 33' -H 'Content-Type: application/x-www-form-urlencoded' -d 'teacher_id=1&student_id=1&grade=1' http://127.0.0.1:8001/grades/
+[2026-06-10 04:27:30,825 - INFO] - Response status code='201', elapsed_time='0:00:00.013057'
+{
+  "teacher_id": 1,
+  "student_id": 1,
+  "grade": 1,
+  "id": 1
+}
+

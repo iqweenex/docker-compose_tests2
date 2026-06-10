@@ -1,6 +1,0 @@
-[2026-06-09 09:31:44,739 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 26' -H 'Content-Type: application/json' -d '{"name": "Jared Schwartz"}' http://127.0.0.1:8001/groups/
-[2026-06-09 09:31:44,739 - INFO] - Response status code='403', elapsed_time='0:00:00.001920'
-{
-  "detail": "Access denied"
-}
-
