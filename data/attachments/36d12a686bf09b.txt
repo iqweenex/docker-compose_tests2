@@ -1,0 +1,24 @@
+[2026-06-16 08:55:12,326 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 156' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=tracydelgado&password=4cy%231xJwc7%290REpQQ%28s86tW%23uS%26RML&password_repeat=4cy%231xJwc7%290REpQQ%28s86tW%23uS%26RML&email=apeters%40example.org' http://127.0.0.1:8000/auth/register/
+[2026-06-16 08:55:12,326 - INFO] - Response status code='201', elapsed_time='0:00:00.273818'
+{
+  "detail": "User registered"
+}
+
+[2026-06-16 08:55:12,682 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 71' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=tracydelgado&password=4cy%231xJwc7%290REpQQ%28s86tW%23uS%26RML' http://127.0.0.1:8000/auth/login/
+[2026-06-16 08:55:12,682 - INFO] - Response status code='200', elapsed_time='0:00:00.314475'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoidHJhY3lkZWxnYWRvIiwiZXhwIjoxNzgxNjA3MzEyLCJpYXQiOjE3ODE2MDAxMTJ9.iWavNELEyxqxtrTG-fn4nhjs8LszluK10UUnAywgL5HRHPtCeVdnyrE1ssUb-bIkobouqrsGbkpqWLIrYbu2NWiie72demhnyQeEc5wc4E9LHzSvT9m5x8RJF2mT9ZCpKmlGoMPcKVn4_u-LbiZGAyLiZajDrftdjEWnUkQQCsNSBuRCt6yR0108Wc7AL8dyRAEVIccdsYxP1ukVqy5HhF1DMLV4-etc0MQ-icYIc4xP6CFkaEcnE7qNJUJuoNjP4Nb3QmSmP-QZWsqzari1l_mRTnMRr9X9by6DI1rVoriTbBHEWtyDHIvWeCR7YIH_9-j7rwyE5LMPFP0m0xCAyw",
+  "token_type": "Bearer"
+}
+
+[2026-06-16 08:55:12,683 - INFO] - ### Get statistics for non-existent group
+[2026-06-16 08:55:12,694 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoidHJhY3lkZWxnYWRvIiwiZXhwIjoxNzgxNjA3MzEyLCJpYXQiOjE3ODE2MDAxMTJ9.iWavNELEyxqxtrTG-fn4nhjs8LszluK10UUnAywgL5HRHPtCeVdnyrE1ssUb-bIkobouqrsGbkpqWLIrYbu2NWiie72demhnyQeEc5wc4E9LHzSvT9m5x8RJF2mT9ZCpKmlGoMPcKVn4_u-LbiZGAyLiZajDrftdjEWnUkQQCsNSBuRCt6yR0108Wc7AL8dyRAEVIccdsYxP1ukVqy5HhF1DMLV4-etc0MQ-icYIc4xP6CFkaEcnE7qNJUJuoNjP4Nb3QmSmP-QZWsqzari1l_mRTnMRr9X9by6DI1rVoriTbBHEWtyDHIvWeCR7YIH_9-j7rwyE5LMPFP0m0xCAyw' 'http://127.0.0.1:8001/grades/stats/?group_id=-1'
+[2026-06-16 08:55:12,694 - INFO] - Response status code='200', elapsed_time='0:00:00.010817'
+{
+  "count": 0,
+  "min": null,
+  "max": null,
+  "avg": null
+}
+
+[2026-06-16 08:55:12,695 - INFO] - ====Stats: {'count': 0, 'min': None, 'max': None, 'avg': None}

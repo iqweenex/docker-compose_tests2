@@ -1,6 +1,0 @@
-[2026-06-10 04:35:39,641 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 23' -H 'Content-Type: application/json' -d '{"name": "Jamie Cline"}' http://127.0.0.1:8001/groups/
-[2026-06-10 04:35:39,641 - INFO] - Response status code='403', elapsed_time='0:00:00.001565'
-{
-  "detail": "Access denied"
-}
-
