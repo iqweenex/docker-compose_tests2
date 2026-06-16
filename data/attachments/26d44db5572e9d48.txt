@@ -1,0 +1,22 @@
+[2026-06-16 09:28:39,038 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 151' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=hhatfield&password=%29sA_5ze%23rU9_triId9Vx7%26%5EyU8dev6&password_repeat=%29sA_5ze%23rU9_triId9Vx7%26%5EyU8dev6&email=fgonzalez%40example.net' http://127.0.0.1:8000/auth/register/
+[2026-06-16 09:28:39,038 - INFO] - Response status code='201', elapsed_time='0:00:00.307746'
+{
+  "detail": "User registered"
+}
+
+[2026-06-16 09:28:39,432 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 66' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=hhatfield&password=%29sA_5ze%23rU9_triId9Vx7%26%5EyU8dev6' http://127.0.0.1:8000/auth/login/
+[2026-06-16 09:28:39,432 - INFO] - Response status code='200', elapsed_time='0:00:00.353372'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJ1c2VybmFtZSI6ImhoYXRmaWVsZCIsImV4cCI6MTc4MTYwOTMxOSwiaWF0IjoxNzgxNjAyMTE5fQ.GKrrJoScahMFmGsvbHEWPFvHG8zfwO3bLXA28YQ8BDqytn-Mb8FBpyBmI4Y8SgQEN-EnrPpEVmJlAcEFpYbw0pPhMESB2VDWRiSJuxvSepPBTi39OhynROEYY7PntmX0PtHyMFvn8WNMLJRKBz7faKnT45QGFy5UYCOBzuSpjEmWkrQfQf55Mev2a_tVSbNOOwzMv2X8oicFXgSn3jPQoy8xrYZv1UHS3IHMVX2mah8DAbPiqqc_uvJN5BhfhU0oioxiX8cPsaGsXifyPGkqRIPZwZwDvbIw5z1oAd_zAuhIH4hEMfFPQH6bGwl2S1aL8tboIovfoEgZI8_McTTH4g",
+  "token_type": "Bearer"
+}
+
+[2026-06-16 09:28:39,444 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJ1c2VybmFtZSI6ImhoYXRmaWVsZCIsImV4cCI6MTc4MTYwOTMxOSwiaWF0IjoxNzgxNjAyMTE5fQ.GKrrJoScahMFmGsvbHEWPFvHG8zfwO3bLXA28YQ8BDqytn-Mb8FBpyBmI4Y8SgQEN-EnrPpEVmJlAcEFpYbw0pPhMESB2VDWRiSJuxvSepPBTi39OhynROEYY7PntmX0PtHyMFvn8WNMLJRKBz7faKnT45QGFy5UYCOBzuSpjEmWkrQfQf55Mev2a_tVSbNOOwzMv2X8oicFXgSn3jPQoy8xrYZv1UHS3IHMVX2mah8DAbPiqqc_uvJN5BhfhU0oioxiX8cPsaGsXifyPGkqRIPZwZwDvbIw5z1oAd_zAuhIH4hEMfFPQH6bGwl2S1aL8tboIovfoEgZI8_McTTH4g' -H 'Content-Length: 70' -H 'Content-Type: application/json' -d '{"first_name": "Michelle", "last_name": "Lopez", "subject": "Biology"}' http://127.0.0.1:8001/teachers/
+[2026-06-16 09:28:39,444 - INFO] - Response status code='201', elapsed_time='0:00:00.010109'
+{
+  "first_name": "Michelle",
+  "last_name": "Lopez",
+  "subject": "Biology",
+  "id": 8
+}
+
