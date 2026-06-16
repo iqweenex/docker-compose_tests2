@@ -2,21 +2,12 @@ pipeline {
     agent any
 
     environment {
-        // GitHub credentials для доступа к репозиторию
         GITHUB_CREDS = credentials('github-credentials')
-
-        // PostgreSQL credentials из Jenkins
         POSTGRES_CREDS = credentials('postgres-credentials')
-
-        // Распаковываем логин и пароль из credentials
         POSTGRES_USER = "${POSTGRES_CREDS_USR}"
         POSTGRES_PASSWORD = "${POSTGRES_CREDS_PSW}"
-
-        // Настройки БД
         POSTGRES_DB_AUTH = 'auth_db'
         POSTGRES_DB_UNIVERSITY = 'university_db'
-
-        // URL для сервисов (внутри Docker сети)
         AUTH_SERVICE_INTERNAL_URL = 'http://auth:8000'
         AUTH_SERVICE_API_URL = 'http://auth:8000'
         UNIVERSITY_SERVICE_INTERNAL_URL = 'http://university:8000'
@@ -66,20 +57,13 @@ EOF
         stage('Start Services') {
             steps {
                 sh '''
-                    # Останавливаем старые контейнеры
-                    docker-compose down -v || true
-
-                    # Запускаем сервисы
+                    docker-compose down -v --remove-orphans || true
                     docker-compose up -d
 
-                    # Ждем готовности сервисов
                     echo "Waiting for services to be ready..."
 
-                    # Ждем auth сервис (порт 8000)
-                    timeout 120 bash -c 'while ! curl -s http://localhost:8000/docs > /dev/null; do echo "Waiting for auth..."; sleep 3; done'
-
-                    # Ждем university сервис (порт 8001)
-                    timeout 120 bash -c 'while ! curl -s http://localhost:8001/docs > /dev/null; do echo "Waiting for university..."; sleep 3; done'
+                    timeout 120 bash -c 'while ! curl -s http://auth:8000/docs > /dev/null; do echo "Waiting for auth..."; sleep 3; done'
+                    timeout 120 bash -c 'while ! curl -s http://university:8000/docs > /dev/null; do echo "Waiting for university..."; sleep 3; done'
 
                     echo "=== All services are ready ==="
                     docker-compose ps
