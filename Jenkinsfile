@@ -48,17 +48,18 @@ pipeline {
             steps {
                 sh '''
                     cat > .env << EOF
-                    POSTGRES_USER=${POSTGRES_USER}
-                    POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-                    POSTGRES_DB_AUTH=${POSTGRES_DB_AUTH}
-                    POSTGRES_DB_UNIVERSITY=${POSTGRES_DB_UNIVERSITY}
-                    AUTH_SERVICE_INTERNAL_URL=${AUTH_SERVICE_INTERNAL_URL}
-                    AUTH_SERVICE_API_URL=${AUTH_SERVICE_API_URL}
-                    UNIVERSITY_SERVICE_INTERNAL_URL=${UNIVERSITY_SERVICE_INTERNAL_URL}
-                    UNIVERSITY_SERVICE_API_URL=${UNIVERSITY_SERVICE_API_URL}
-                    EOF
-                    echo "=== .env file created successfully ==="
+POSTGRES_USER=${POSTGRES_USER}
+POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+POSTGRES_DB_AUTH=${POSTGRES_DB_AUTH}
+POSTGRES_DB_UNIVERSITY=${POSTGRES_DB_UNIVERSITY}
+AUTH_SERVICE_INTERNAL_URL=${AUTH_SERVICE_INTERNAL_URL}
+AUTH_SERVICE_API_URL=${AUTH_SERVICE_API_URL}
+UNIVERSITY_SERVICE_INTERNAL_URL=${UNIVERSITY_SERVICE_INTERNAL_URL}
+UNIVERSITY_SERVICE_API_URL=${UNIVERSITY_SERVICE_API_URL}
+EOF
                 '''
+                sh 'echo "=== .env file created successfully ==="'
+                sh 'cat .env'
             }
         }
 
@@ -95,13 +96,7 @@ pipeline {
             }
             post {
                 always {
-                    // Сохраняем результаты тестов в JUnit формате
                     junit '**/report.xml' || true
-
-                    // Сохраняем логи
-                    archiveArtifacts artifacts: '**/*.log', fingerprint: true || true
-
-                    // Сохраняем Allure результаты
                     archiveArtifacts artifacts: 'allure-results/**', fingerprint: true || true
                 }
             }
@@ -110,7 +105,6 @@ pipeline {
 
     post {
         always {
-            // Останавливаем контейнеры после тестов
             sh '''
                 docker-compose down -v
             '''
