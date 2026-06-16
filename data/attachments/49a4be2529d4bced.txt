@@ -1,0 +1,5 @@
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 26' -H 'Content-Type: application/json' -d '{"name": "Ryan Fernandez"}' http://127.0.0.1:8001/groups/
+INFO     Logger:logger.py:30 Response status code='403', elapsed_time='0:00:00.001724'
+{
+  "detail": "Access denied"
+}
