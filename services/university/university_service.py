@@ -1,7 +1,8 @@
+import os
 import random
 
 from faker import Faker
-import os
+
 from services.general.base_service import BaseService
 from services.general.models.success_response import SuccessResponse
 from services.university.helpers.grade_helper import GradeHelper
