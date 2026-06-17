@@ -1,0 +1,56 @@
+[2026-06-17 12:02:53,839 - INFO] - Waiting for 'auth service' during '180' seconds
+[2026-06-17 12:02:53,843 - INFO] - Waiting for 'university service' during '180' seconds
+[2026-06-17 12:02:54,186 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 155' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=martinrebecca&password=0tbSh%2AEQ%5EhC%25UQr1%28DB7Yoy5EQrMDD&password_repeat=0tbSh%2AEQ%5EhC%25UQr1%28DB7Yoy5EQrMDD&email=michael92%40example.org' http://127.0.0.1:8000/auth/register/
+[2026-06-17 12:02:54,186 - INFO] - Response status code='201', elapsed_time='0:00:00.336565'
+{
+  "detail": "User registered"
+}
+
+[2026-06-17 12:02:54,584 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 70' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=martinrebecca&password=0tbSh%2AEQ%5EhC%25UQr1%28DB7Yoy5EQrMDD' http://127.0.0.1:8000/auth/login/
+[2026-06-17 12:02:54,585 - INFO] - Response status code='200', elapsed_time='0:00:00.356626'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFydGlucmViZWNjYSIsImV4cCI6MTc4MTcwNDk3NCwiaWF0IjoxNzgxNjk3Nzc0fQ.F6TyZo_8P4m-8UpU5vPZ8Cdr799PEYBJjQMjM5JaVl_LTwdedGySu93CmNeKNT44nYeRPSLQ28xMq3J6mAE6fwIHLQqKXflKzhG-chmW_Bp50tmHwfDtYTynfQxS192PpgO6aRtg39UBj7li4ABpLiP9e7uozlfQw2kgpBP4J25qRmCe22fvj37mQ1oHu-oNP2Vzp-4VUBb4V56VzXauAKm-e_KwTbknws_pnNzlTHMqm5zpV5HM_eAthr9CXZwUEEDxp5aoYDY1BzmT_KYTMesZtwVzaP3MAy_MpssmP0PRqaiofiC0gaxwwfHj3wxKmOqth2dTF4pZmhBYnUaG3g",
+  "token_type": "Bearer"
+}
+
+[2026-06-17 12:02:54,586 - INFO] - ### Step 1. Create group
+[2026-06-17 12:02:54,627 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFydGlucmViZWNjYSIsImV4cCI6MTc4MTcwNDk3NCwiaWF0IjoxNzgxNjk3Nzc0fQ.F6TyZo_8P4m-8UpU5vPZ8Cdr799PEYBJjQMjM5JaVl_LTwdedGySu93CmNeKNT44nYeRPSLQ28xMq3J6mAE6fwIHLQqKXflKzhG-chmW_Bp50tmHwfDtYTynfQxS192PpgO6aRtg39UBj7li4ABpLiP9e7uozlfQw2kgpBP4J25qRmCe22fvj37mQ1oHu-oNP2Vzp-4VUBb4V56VzXauAKm-e_KwTbknws_pnNzlTHMqm5zpV5HM_eAthr9CXZwUEEDxp5aoYDY1BzmT_KYTMesZtwVzaP3MAy_MpssmP0PRqaiofiC0gaxwwfHj3wxKmOqth2dTF4pZmhBYnUaG3g' -H 'Content-Length: 24' -H 'Content-Type: application/json' -d '{"name": "David Hudson"}' http://127.0.0.1:8001/groups/
+[2026-06-17 12:02:54,627 - INFO] - Response status code='201', elapsed_time='0:00:00.040293'
+{
+  "name": "David Hudson",
+  "id": 1
+}
+
+[2026-06-17 12:02:54,628 - INFO] - ### Step 2. Create random student
+[2026-06-17 12:02:54,687 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFydGlucmViZWNjYSIsImV4cCI6MTc4MTcwNDk3NCwiaWF0IjoxNzgxNjk3Nzc0fQ.F6TyZo_8P4m-8UpU5vPZ8Cdr799PEYBJjQMjM5JaVl_LTwdedGySu93CmNeKNT44nYeRPSLQ28xMq3J6mAE6fwIHLQqKXflKzhG-chmW_Bp50tmHwfDtYTynfQxS192PpgO6aRtg39UBj7li4ABpLiP9e7uozlfQw2kgpBP4J25qRmCe22fvj37mQ1oHu-oNP2Vzp-4VUBb4V56VzXauAKm-e_KwTbknws_pnNzlTHMqm5zpV5HM_eAthr9CXZwUEEDxp5aoYDY1BzmT_KYTMesZtwVzaP3MAy_MpssmP0PRqaiofiC0gaxwwfHj3wxKmOqth2dTF4pZmhBYnUaG3g' -H 'Content-Length: 148' -H 'Content-Type: application/json' -d '{"first_name": "Dawn", "last_name": "Miller", "email": "christinaknight@example.org", "degree": "Associate", "phone": "+78246164458", "group_id": 1}' http://127.0.0.1:8001/students/
+[2026-06-17 12:02:54,688 - INFO] - Response status code='201', elapsed_time='0:00:00.018029'
+{
+  "first_name": "Dawn",
+  "last_name": "Miller",
+  "email": "christinaknight@example.org",
+  "degree": "Associate",
+  "phone": "+78246164458",
+  "group_id": 1,
+  "id": 1
+}
+
+[2026-06-17 12:02:54,688 - INFO] - ### Step 3. Create teacher
+[2026-06-17 12:02:54,743 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFydGlucmViZWNjYSIsImV4cCI6MTc4MTcwNDk3NCwiaWF0IjoxNzgxNjk3Nzc0fQ.F6TyZo_8P4m-8UpU5vPZ8Cdr799PEYBJjQMjM5JaVl_LTwdedGySu93CmNeKNT44nYeRPSLQ28xMq3J6mAE6fwIHLQqKXflKzhG-chmW_Bp50tmHwfDtYTynfQxS192PpgO6aRtg39UBj7li4ABpLiP9e7uozlfQw2kgpBP4J25qRmCe22fvj37mQ1oHu-oNP2Vzp-4VUBb4V56VzXauAKm-e_KwTbknws_pnNzlTHMqm5zpV5HM_eAthr9CXZwUEEDxp5aoYDY1BzmT_KYTMesZtwVzaP3MAy_MpssmP0PRqaiofiC0gaxwwfHj3wxKmOqth2dTF4pZmhBYnUaG3g' -H 'Content-Length: 68' -H 'Content-Type: application/json' -d '{"first_name": "Kelly", "last_name": "Rogers", "subject": "Physics"}' http://127.0.0.1:8001/teachers/
+[2026-06-17 12:02:54,744 - INFO] - Response status code='201', elapsed_time='0:00:00.013456'
+{
+  "first_name": "Kelly",
+  "last_name": "Rogers",
+  "subject": "Physics",
+  "id": 1
+}
+
+[2026-06-17 12:02:54,744 - INFO] - ### Step 4. Create grade
+[2026-06-17 12:02:54,800 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibWFydGlucmViZWNjYSIsImV4cCI6MTc4MTcwNDk3NCwiaWF0IjoxNzgxNjk3Nzc0fQ.F6TyZo_8P4m-8UpU5vPZ8Cdr799PEYBJjQMjM5JaVl_LTwdedGySu93CmNeKNT44nYeRPSLQ28xMq3J6mAE6fwIHLQqKXflKzhG-chmW_Bp50tmHwfDtYTynfQxS192PpgO6aRtg39UBj7li4ABpLiP9e7uozlfQw2kgpBP4J25qRmCe22fvj37mQ1oHu-oNP2Vzp-4VUBb4V56VzXauAKm-e_KwTbknws_pnNzlTHMqm5zpV5HM_eAthr9CXZwUEEDxp5aoYDY1BzmT_KYTMesZtwVzaP3MAy_MpssmP0PRqaiofiC0gaxwwfHj3wxKmOqth2dTF4pZmhBYnUaG3g' -H 'Content-Length: 33' -H 'Content-Type: application/x-www-form-urlencoded' -d 'teacher_id=1&student_id=1&grade=5' http://127.0.0.1:8001/grades/
+[2026-06-17 12:02:54,801 - INFO] - Response status code='201', elapsed_time='0:00:00.015137'
+{
+  "teacher_id": 1,
+  "student_id": 1,
+  "grade": 5,
+  "id": 1
+}
+

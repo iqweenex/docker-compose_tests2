@@ -1,0 +1,27 @@
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 143' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=mcdanieljay&password=U3YDepDF6zEgU3%28n%29Vqjdwtzw37vFc&password_repeat=U3YDepDF6zEgU3%28n%29Vqjdwtzw37vFc&email=jerry08%40example.com' http://127.0.0.1:8000/auth/register/
+INFO     Logger:logger.py:30 Response status code='201', elapsed_time='0:00:00.308064'
+{
+  "detail": "User registered"
+}
+
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 64' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=mcdanieljay&password=U3YDepDF6zEgU3%28n%29Vqjdwtzw37vFc' http://127.0.0.1:8000/auth/login/
+INFO     Logger:logger.py:30 Response status code='200', elapsed_time='0:00:00.352559'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJuYW1lIjoibWNkYW5pZWxqYXkiLCJleHAiOjE3ODE3MDQ5ODUsImlhdCI6MTc4MTY5Nzc4NX0.Vp_uFG3ZpP8mu8XxdXl9RxcShxn31O9MVa9Vxsh3yLboM642ygGcjcI4U72IwE-EWUQMvTKdErH1Z9yJ0yMaBSe2OJiTeKduDL9ysIlh_g7fHSnrnb2o2-owxG1NobxH9jJ25B08wfh-vMg0Lk3SmfwOD7c-3O21QHpdm4NiA27eVy8mCej6KBsOfeRHhFFdUxCYhjhy2_aX14pU3fwm4B7GPABXu4qzO43X-WqE5R4f-P2OercMFW9-JgryApaAtBCermtlQVSvoRFA-5v7_VOELlGrUvN8GAtmw6KJ4ho4BonXtEzzuUWIIuMj4YHgE6f-Va8x871ia-r6sq3bzA",
+  "token_type": "Bearer"
+}
+INFO     Logger:logger.py:30 ### Get statistics for non-existent student
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJuYW1lIjoibWNkYW5pZWxqYXkiLCJleHAiOjE3ODE3MDQ5ODUsImlhdCI6MTc4MTY5Nzc4NX0.Vp_uFG3ZpP8mu8XxdXl9RxcShxn31O9MVa9Vxsh3yLboM642ygGcjcI4U72IwE-EWUQMvTKdErH1Z9yJ0yMaBSe2OJiTeKduDL9ysIlh_g7fHSnrnb2o2-owxG1NobxH9jJ25B08wfh-vMg0Lk3SmfwOD7c-3O21QHpdm4NiA27eVy8mCej6KBsOfeRHhFFdUxCYhjhy2_aX14pU3fwm4B7GPABXu4qzO43X-WqE5R4f-P2OercMFW9-JgryApaAtBCermtlQVSvoRFA-5v7_VOELlGrUvN8GAtmw6KJ4ho4BonXtEzzuUWIIuMj4YHgE6f-Va8x871ia-r6sq3bzA' 'http://127.0.0.1:8001/grades/stats/?student_id=-1'
+INFO     Logger:logger.py:30 Response status code='200', elapsed_time='0:00:00.009661'
+{
+  "count": 0,
+  "min": null,
+  "max": null,
+  "avg": null
+}
+
+INFO     Logger:logger.py:30 =====Stats: {'count': 0, 'min': None, 'max': None, 'avg': None}
+INFO     Logger:logger.py:30 Soft assert equal
+INFO     Logger:logger.py:30 Soft assert condition
+INFO     Logger:logger.py:30 Soft assert condition
+INFO     Logger:logger.py:30 Soft assert condition
