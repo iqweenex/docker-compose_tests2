@@ -1,0 +1,23 @@
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 150' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=amy66&password=h8a8yHOk%2A7%28ro%23G%21aneATWiz00%28E6z&password_repeat=h8a8yHOk%2A7%28ro%23G%21aneATWiz00%28E6z&email=hfrancis%40example.net' http://127.0.0.1:8000/auth/register/
+INFO     Logger:logger.py:30 Response status code='201', elapsed_time='0:00:00.272764'
+{
+  "detail": "User registered"
+}
+
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 64' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=amy66&password=h8a8yHOk%2A7%28ro%23G%21aneATWiz00%28E6z' http://127.0.0.1:8000/auth/login/
+INFO     Logger:logger.py:30 Response status code='200', elapsed_time='0:00:00.313235'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoiYW15NjYiLCJleHAiOjE3ODE3MDQ3MjMsImlhdCI6MTc4MTY5NzUyM30.Gm9z2kXKmTdK-1n7aGY4BXS9Iw-4XW6T2dQ99PAX96JXGtba8Hco5J-1Qjc_pR5KypjUszxcuoubLY3tgnt8dbJmEuCCnah90pQ6Zf_8-83njk3avrCDyo4VA0QrYlhlaWxVGV6qyzSSbBHVmgAZ38iXfDLxE1XX6ZNLYIqyrauGnLqcJSPWNPVgqs3QPCkgUngKnElAMi6iWxBBL8fuuCnZP1ATQgZEj-M4JMAFdiRakCxZf-zHOfRsyzXxzKQbXTOYUrX3JsClfmFuJqt-QeEKfN3X8xTg92qYPH2aQIwihZnjtYqUsqoEWrrizE15_akFhgKTsZXCeSYq3Z0-ZQ",
+  "token_type": "Bearer"
+}
+INFO     Logger:logger.py:30 ### Get statistics for non-existent group
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoiYW15NjYiLCJleHAiOjE3ODE3MDQ3MjMsImlhdCI6MTc4MTY5NzUyM30.Gm9z2kXKmTdK-1n7aGY4BXS9Iw-4XW6T2dQ99PAX96JXGtba8Hco5J-1Qjc_pR5KypjUszxcuoubLY3tgnt8dbJmEuCCnah90pQ6Zf_8-83njk3avrCDyo4VA0QrYlhlaWxVGV6qyzSSbBHVmgAZ38iXfDLxE1XX6ZNLYIqyrauGnLqcJSPWNPVgqs3QPCkgUngKnElAMi6iWxBBL8fuuCnZP1ATQgZEj-M4JMAFdiRakCxZf-zHOfRsyzXxzKQbXTOYUrX3JsClfmFuJqt-QeEKfN3X8xTg92qYPH2aQIwihZnjtYqUsqoEWrrizE15_akFhgKTsZXCeSYq3Z0-ZQ' 'http://127.0.0.1:8001/grades/stats/?group_id=-1'
+INFO     Logger:logger.py:30 Response status code='200', elapsed_time='0:00:00.009987'
+{
+  "count": 0,
+  "min": null,
+  "max": null,
+  "avg": null
+}
+
+INFO     Logger:logger.py:30 ====Stats: {'count': 0, 'min': None, 'max': None, 'avg': None}
