@@ -12,6 +12,8 @@ pipeline {
         AUTH_SERVICE_API_URL = 'http://auth:8000'
         UNIVERSITY_SERVICE_INTERNAL_URL = 'http://university:8000'
         UNIVERSITY_SERVICE_API_URL = 'http://university:8000'
+        AUTH_SERVICE_URL = "http://auth:8000"
+        UNIVERSITY_SERVICE_URL = "http://university:8000"
     }
 
     stages {

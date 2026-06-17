@@ -1,7 +1,7 @@
 import random
 
 from faker import Faker
-
+import os
 from services.general.base_service import BaseService
 from services.general.models.success_response import SuccessResponse
 from services.university.helpers.grade_helper import GradeHelper
@@ -26,7 +26,7 @@ faker = Faker()
 
 
 class UniversityService(BaseService):
-    SERVICE_URL = "http://127.0.0.1:8001"
+    SERVICE_URL = os.getenv("UNIVERSITY_SERVICE_URL", "http://127.0.0.1:8001")
 
     def __init__(self, api_utils: ApiUtils):
         super().__init__(api_utils)

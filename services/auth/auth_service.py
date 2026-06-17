@@ -6,10 +6,11 @@ from services.auth.models.register_request import RegisterRequest
 from services.general.base_service import BaseService
 from services.general.models.success_response import SuccessResponse
 from utils.api_utils import ApiUtils
+import os
 
 
 class AuthService(BaseService):
-    SERVICE_URL = "http://127.0.0.1:8000"
+    SERVICE_URL = os.getenv("AUTH_SERVICE_URL", "http://127.0.0.1:8000")
 
     def __init__(self, api_utils: ApiUtils):
         super().__init__(api_utils)
