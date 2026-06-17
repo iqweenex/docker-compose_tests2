@@ -1,6 +1,0 @@
-[2026-06-17 06:05:50,959 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 23' -H 'Content-Type: application/json' -d '{"name": "Amber House"}' http://127.0.0.1:8001/groups/
-[2026-06-17 06:05:50,960 - INFO] - Response status code='403', elapsed_time='0:00:00.001572'
-{
-  "detail": "Access denied"
-}
-
