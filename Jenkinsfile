@@ -2,18 +2,25 @@ pipeline {
     agent any
 
     environment {
+        // GitHub credentials для доступа к репозиторию
         GITHUB_CREDS = credentials('github-credentials')
+
+        // PostgreSQL credentials из Jenkins
         POSTGRES_CREDS = credentials('postgres-credentials')
+
+        // Распаковываем логин и пароль из credentials
         POSTGRES_USER = "${POSTGRES_CREDS_USR}"
         POSTGRES_PASSWORD = "${POSTGRES_CREDS_PSW}"
+
+        // Настройки БД
         POSTGRES_DB_AUTH = 'auth_db'
         POSTGRES_DB_UNIVERSITY = 'university_db'
+
+        // URL для сервисов (внутри Docker сети)
         AUTH_SERVICE_INTERNAL_URL = 'http://auth:8000'
         AUTH_SERVICE_API_URL = 'http://auth:8000'
         UNIVERSITY_SERVICE_INTERNAL_URL = 'http://university:8000'
         UNIVERSITY_SERVICE_API_URL = 'http://university:8000'
-        AUTH_SERVICE_URL = "http://auth:8000"
-        UNIVERSITY_SERVICE_URL = "http://university:8000"
     }
 
     stages {
@@ -82,7 +89,7 @@ EOF
             }
             post {
                 always {
-                    junit '**/report.xml' || true
+                    junit testResults: '**/report.xml', allowEmptyResults: true
                     archiveArtifacts artifacts: 'allure-results/**', fingerprint: true || true
                 }
             }
