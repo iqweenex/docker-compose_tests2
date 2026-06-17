@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.11-slim'
+            args '-v /var/run/docker.sock:/var/run/docker.sock --network university-tests_default'
+        }
+    }
 
     environment {
         GITHUB_CREDS = credentials('github-credentials')
@@ -23,10 +28,15 @@ pipeline {
             }
         }
 
-        stage('Setup Python') {
+        stage('Setup Environment') {
             steps {
                 sh '''
+                    apt-get update
+                    apt-get install -y python3-venv curl
+                    curl -L "https://github.com/docker/compose/releases/download/v2.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    chmod +x /usr/local/bin/docker-compose
                     python3 --version
+                    docker-compose --version
                     python3 -m venv venv
                     . venv/bin/activate
                     pip install --upgrade pip
