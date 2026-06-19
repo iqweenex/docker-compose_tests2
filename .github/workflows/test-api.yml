@@ -1,0 +1,99 @@
+name: API Tests
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+env:
+  SERVICE_READY_TIMEOUT: 60
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Ruff linter
+        uses: astral-sh/ruff-action@v1
+        with:
+          args: "check --output-format=github"
+
+  api-tests:
+    runs-on: ubuntu-latest
+    needs: lint
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create .env file from GitHub Variables and Secrets
+        run: |
+          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+          echo "POSTGRES_DB_AUTH=${{ vars.POSTGRES_DB_AUTH }}" >> .env
+          echo "POSTGRES_DB_UNIVERSITY=${{ vars.POSTGRES_DB_UNIVERSITY }}" >> .env
+          echo "UNIVERSITY_SERVICE_INTERNAL_URL=${{ vars.UNIVERSITY_SERVICE_INTERNAL_URL }}" >> .env
+          echo "UNIVERSITY_SERVICE_API_URL=${{ vars.UNIVERSITY_SERVICE_API_URL }}" >> .env
+          echo "AUTH_SERVICE_INTERNAL_URL=${{ vars.AUTH_SERVICE_INTERNAL_URL }}" >> .env
+          echo "AUTH_SERVICE_API_URL=${{ vars.AUTH_SERVICE_API_URL }}" >> .env
+
+      - name: Start services with Docker Compose
+        run: |
+          docker compose up -d --wait --wait-timeout ${{ env.SERVICE_READY_TIMEOUT }}
+          docker compose ps
+
+      - name: Build test image
+        run: |
+          docker build --tag api-tests --file Dockerfile.tests .
+
+      - name: Run tests
+        run: |
+          mkdir -p allure-results
+          docker run --rm --network host \
+            --name test-runner \
+            -v ${{ github.workspace }}/allure-results:/app/allure-results \
+            api-tests
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 30
+
+  allure-report:
+    runs-on: ubuntu-latest
+    needs: api-tests
+    if: always()
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download test results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Install Allure and generate report
+        run: |
+          wget -q https://github.com/allure-framework/allure2/releases/download/2.29.0/allure-2.29.0.tgz
+          tar -xzf allure-2.29.0.tgz
+          sudo mv allure-2.29.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+          allure generate allure-results -o allure-report --clean
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
+          publish_branch: gh-pages
+          keep_files: false
