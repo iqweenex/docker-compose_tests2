@@ -1,0 +1,24 @@
+[2026-06-19 07:52:27,453 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 155' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=sgilbert&password=J%26N_UcvpdUpLfLcFb4z5%5EOR7%29x%26Q%23W&password_repeat=J%26N_UcvpdUpLfLcFb4z5%5EOR7%29x%26Q%23W&email=ricecarrie%40example.com' http://127.0.0.1:8000/auth/register/
+[2026-06-19 07:52:27,453 - INFO] - Response status code='201', elapsed_time='0:00:00.273568'
+{
+  "detail": "User registered"
+}
+
+[2026-06-19 07:52:27,807 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 67' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=sgilbert&password=J%26N_UcvpdUpLfLcFb4z5%5EOR7%29x%26Q%23W' http://127.0.0.1:8000/auth/login/
+[2026-06-19 07:52:27,808 - INFO] - Response status code='200', elapsed_time='0:00:00.313663'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoic2dpbGJlcnQiLCJleHAiOjE3ODE4NjI3NDcsImlhdCI6MTc4MTg1NTU0N30.m9tA5IQybsc5HfoyDdC-Pa4XYF8U_eApDH84WOBl8aDbsiWgNoaeUqfLqW2bdDaO7zV7o0-9bi39Apl-VpdXr4I9p6xUdA0kw_jfs6tPLONoBVszjUZfsdjcjvlgWxs1YfgxprXyMaOf-uupeT9YxTz0yOyEBmRjLAI4zSYkwa52yI9Mx-gqZbBJ1QeTkHvCYBAvkfH0Y1G4-KmmkGBjJ7FvmrF1lZ2wRMWMLnJFp8MJg-QWQgTQaKSj4WFSVRAZhht-t9e68d9uCD6gZKCEo86-9ErjSLQPqmabFwrBy8chmBQZUNbsAjhusq2taJlMkPXtTosie31060dGtSv_vg",
+  "token_type": "Bearer"
+}
+
+[2026-06-19 07:52:27,809 - INFO] - ### Get statistics for non-existent group
+[2026-06-19 07:52:27,819 - INFO] - Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsInVzZXJuYW1lIjoic2dpbGJlcnQiLCJleHAiOjE3ODE4NjI3NDcsImlhdCI6MTc4MTg1NTU0N30.m9tA5IQybsc5HfoyDdC-Pa4XYF8U_eApDH84WOBl8aDbsiWgNoaeUqfLqW2bdDaO7zV7o0-9bi39Apl-VpdXr4I9p6xUdA0kw_jfs6tPLONoBVszjUZfsdjcjvlgWxs1YfgxprXyMaOf-uupeT9YxTz0yOyEBmRjLAI4zSYkwa52yI9Mx-gqZbBJ1QeTkHvCYBAvkfH0Y1G4-KmmkGBjJ7FvmrF1lZ2wRMWMLnJFp8MJg-QWQgTQaKSj4WFSVRAZhht-t9e68d9uCD6gZKCEo86-9ErjSLQPqmabFwrBy8chmBQZUNbsAjhusq2taJlMkPXtTosie31060dGtSv_vg' 'http://127.0.0.1:8001/grades/stats/?group_id=-1'
+[2026-06-19 07:52:27,819 - INFO] - Response status code='200', elapsed_time='0:00:00.009842'
+{
+  "count": 0,
+  "min": null,
+  "max": null,
+  "avg": null
+}
+
+[2026-06-19 07:52:27,819 - INFO] - ====Stats: {'count': 0, 'min': None, 'max': None, 'avg': None}

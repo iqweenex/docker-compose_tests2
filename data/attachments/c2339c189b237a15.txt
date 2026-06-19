@@ -1,0 +1,27 @@
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 140' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=kristine33&password=hsVxfBqt%28G_iX_hsfhkG9MoNfwLdMY&password_repeat=hsVxfBqt%28G_iX_hsfhkG9MoNfwLdMY&email=duranmark%40example.com' http://127.0.0.1:8000/auth/register/
+INFO     Logger:logger.py:30 Response status code='201', elapsed_time='0:00:00.272770'
+{
+  "detail": "User registered"
+}
+
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Content-Length: 61' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=kristine33&password=hsVxfBqt%28G_iX_hsfhkG9MoNfwLdMY' http://127.0.0.1:8000/auth/login/
+INFO     Logger:logger.py:30 Response status code='200', elapsed_time='0:00:00.313343'
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsInVzZXJuYW1lIjoia3Jpc3RpbmUzMyIsImV4cCI6MTc4MTg2Mjc0NywiaWF0IjoxNzgxODU1NTQ3fQ.mPe91pL9ygzP15FfiH2z-X5C62JI2TM4kGXN6MMPFUEF41enSGFxMnBOu8xHbr54sFp6Ew-A_WwxXzcqCO6MLsJrHPn0jn_J4y1MY8n9ZGa_cgzwjyQRYyoUDM0gveagPb2KiCA9GzlTtbcDRGYCywDnWfZU2NezCkEiP0wtdXiWHfN55pmhQPcoCJuWiiYi7k_yiT-nK6gSKTxPVb1gTP_EMwtpgBLF6WDPWJmG2jlyUWQtIJ1KaR-P3-zwWby84N7UNuzNdaD-zkIebkjzNIBQdmWaYQtBmh2j-ZWZLfLjrtIyqk5sy9WWZuSChUzvnvn_m4WLyzrked9QsD3GtA",
+  "token_type": "Bearer"
+}
+INFO     Logger:logger.py:30 ### Get statistics for non-existent teacher
+INFO     Logger:logger.py:30 Request:curl -H 'User-Agent: python-requests/2.34.2' -H 'Accept-Encoding: gzip, deflate' -H 'Accept: */*' -H 'Connection: keep-alive' -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjcsInVzZXJuYW1lIjoia3Jpc3RpbmUzMyIsImV4cCI6MTc4MTg2Mjc0NywiaWF0IjoxNzgxODU1NTQ3fQ.mPe91pL9ygzP15FfiH2z-X5C62JI2TM4kGXN6MMPFUEF41enSGFxMnBOu8xHbr54sFp6Ew-A_WwxXzcqCO6MLsJrHPn0jn_J4y1MY8n9ZGa_cgzwjyQRYyoUDM0gveagPb2KiCA9GzlTtbcDRGYCywDnWfZU2NezCkEiP0wtdXiWHfN55pmhQPcoCJuWiiYi7k_yiT-nK6gSKTxPVb1gTP_EMwtpgBLF6WDPWJmG2jlyUWQtIJ1KaR-P3-zwWby84N7UNuzNdaD-zkIebkjzNIBQdmWaYQtBmh2j-ZWZLfLjrtIyqk5sy9WWZuSChUzvnvn_m4WLyzrked9QsD3GtA' 'http://127.0.0.1:8001/grades/stats/?teacher_id=-1'
+INFO     Logger:logger.py:30 Response status code='200', elapsed_time='0:00:00.009122'
+{
+  "count": 0,
+  "min": null,
+  "max": null,
+  "avg": null
+}
+
+INFO     Logger:logger.py:30 ====Stats: {'count': 0, 'min': None, 'max': None, 'avg': None}
+INFO     Logger:logger.py:30 Soft assert equal
+INFO     Logger:logger.py:30 Soft assert condition
+INFO     Logger:logger.py:30 Soft assert condition
+INFO     Logger:logger.py:30 Soft assert condition
